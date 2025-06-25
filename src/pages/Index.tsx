@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import WelcomeScreen from '../components/WelcomeScreen';
 import DashboardScreen from '../components/DashboardScreen';
 import DailyModules from '../components/DailyModules';
@@ -37,20 +37,18 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
-      <Router>
-        <div className="max-w-md mx-auto bg-white min-h-screen shadow-lg relative">
-          <Routes>
-            <Route path="/" element={<DashboardScreen currentDay={currentDay} />} />
-            <Route path="/daily" element={<DailyModules currentDay={currentDay} />} />
-            <Route path="/mood" element={<MoodTracker />} />
-            <Route path="/tools" element={<MentalHealthTools />} />
-            <Route path="/companion" element={<AICompanion />} />
-            <Route path="/crisis" element={<CrisisSupport />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-          <Navigation />
-        </div>
-      </Router>
+      <div className="max-w-md mx-auto bg-white min-h-screen shadow-lg relative">
+        <Routes>
+          <Route path="/" element={<DashboardScreen currentDay={currentDay} />} />
+          <Route path="/daily" element={<DailyModules currentDay={currentDay} />} />
+          <Route path="/mood" element={<MoodTracker />} />
+          <Route path="/tools" element={<MentalHealthTools />} />
+          <Route path="/companion" element={<AICompanion />} />
+          <Route path="/crisis" element={<CrisisSupport />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+        <Navigation />
+      </div>
     </div>
   );
 };
