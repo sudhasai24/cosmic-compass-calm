@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -14,6 +13,41 @@ const DashboardScreen: React.FC<DashboardScreenProps> = ({ currentDay }) => {
   const navigate = useNavigate();
   const [todayCompleted, setTodayCompleted] = useState(false);
   const [weeklyMoodAvg, setWeeklyMoodAvg] = useState(7);
+
+  const motivationalQuotes = [
+    "Every new day is a chance to change your life.",
+    "You are braver than you believe, stronger than you seem, and smarter than you think.",
+    "Progress, not perfection, is the goal.",
+    "Your current situation is not your final destination.",
+    "Small steps every day lead to big changes.",
+    "You have survived 100% of your worst days.",
+    "Healing is not linear, and that's perfectly okay.",
+    "Today you are one day stronger than yesterday.",
+    "Your feelings are valid, but they don't define you.",
+    "Every sunset brings the promise of a new dawn.",
+    "You are worthy of love, especially from yourself.",
+    "Difficult roads often lead to beautiful destinations.",
+    "Your journey matters more than your destination.",
+    "Today is a new page in your story of recovery.",
+    "You are not broken, you are breaking through.",
+    "Courage doesn't mean you're not afraid; it means you keep going anyway.",
+    "Your mental health is just as important as your physical health.",
+    "You are allowed to take up space in this world.",
+    "Growth begins at the end of your comfort zone.",
+    "You are not alone in this journey.",
+    "Your past does not dictate your future.",
+    "Every breath is a new beginning.",
+    "You are enough, exactly as you are right now.",
+    "Tomorrow is full of possibilities.",
+    "Your strength is greater than any challenge.",
+    "Peace comes from within, and you already have it.",
+    "You are the author of your own recovery story.",
+    "Every day you choose healing is a victory.",
+    "Your resilience is your superpower.",
+    "You have made it this far, and that's incredible."
+  ];
+
+  const todaysQuote = motivationalQuotes[(currentDay - 1) % motivationalQuotes.length];
 
   useEffect(() => {
     const completed = localStorage.getItem(`day_${currentDay}_completed`);
@@ -39,9 +73,11 @@ const DashboardScreen: React.FC<DashboardScreenProps> = ({ currentDay }) => {
         <div className="flex justify-center mb-3">
           <Sun className="w-8 h-8 text-amber-400" />
         </div>
-        <h1 className="text-2xl font-bold text-gray-800 mb-2">
-          Good morning! ✨
-        </h1>
+        <div className="bg-gradient-to-r from-purple-100 to-blue-100 p-4 rounded-lg mb-3">
+          <p className="text-lg font-medium text-gray-800 leading-relaxed">
+            "{todaysQuote}"
+          </p>
+        </div>
         <p className="text-gray-600">
           Day {currentDay} of your healing journey
         </p>
